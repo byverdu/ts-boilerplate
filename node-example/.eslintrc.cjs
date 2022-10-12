@@ -13,8 +13,8 @@ module.exports = {
     project: ['./tsconfig.json'],
   },
   plugins: ['@typescript-eslint'],
-  ignorePatterns: ['*.cjs'],
+  ignorePatterns: ['*.cjs', 'lib/*.js'],
   rules: {
-    'no-console': ['error', {allow: ['error']}],
+    'no-console': ['error', { allow: ['error'] }],
   },
 };
