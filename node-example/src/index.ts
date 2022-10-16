@@ -1,5 +1,7 @@
 import { Car, Brand, TankCapacity, FillTank } from '@byverdu/CarFactory';
 
+export { Car, Brand, TankCapacity, FillTank };
+
 export default class CarFactory implements Car {
   public brand: Brand;
   public tank: TankCapacity;
