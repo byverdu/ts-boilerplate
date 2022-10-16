@@ -5,7 +5,14 @@
   "main": "lib/index.js",
   "module": "lib-esm/index.js",
   "types": "lib/index.d.ts",
-  "type": "commonjs",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./lib/typings/index.d.ts",
+      "import": "./lib-esm/index.js",
+      "require": "./lib-cjs/index.cjs"
+    }
+  },
   "scripts": {
     "test": "jest",
     "lint": "tsc --noEmit && eslint ./src",
@@ -13,8 +20,9 @@
     "build:typescript": "mkdir lib && cp -r src/* lib",
     "build:cjs": "tsc",
     "build:esm": "tsc -m es6 --outDir ./lib-esm",
-    "build": "yarn clean && yarn build:typescript && yarn build:cjs && yarn build:esm && yarn docs",
-    "docs": "typedoc ./src/index.ts",
+    "build": "yarn clean && yarn build:typescript && yarn build:cjs && yarn build:esm",
+    "docs:html": "typedoc ./src/index.ts",
+    "docs:markdown": "typedoc --plugin typedoc-plugin-markdown --out docs ./src/index.ts",
     "prepare": "husky install"
   },
   "keywords": [],
@@ -31,6 +39,7 @@
     "prettier": "^2.7.1",
     "ts-jest": "^29.0.3",
     "typedoc": "^0.23.16",
+    "typedoc-plugin-markdown": "^3.13.6",
     "typescript": "^4.8.4"
   }
 }
