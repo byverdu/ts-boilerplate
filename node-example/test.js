@@ -1,10 +1,8 @@
-const CarFactory = require('./lib/index').default;
-const chalk = require('chalk');
+// const CarFactory = require('./lib-cjs/index').default;
+import CarFactory from './lib-esm/index.mjs';
 
 const audi = new CarFactory('audi');
 
-chalk.rgb();
-
 audi.fillTank('full');
 
-console.log(audi);
+console.table(audi);
