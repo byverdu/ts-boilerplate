@@ -19,4 +19,6 @@ Husky config is missing, run:
 > git add ./husky/*
 ```
 
-[Create github page](https://pages.github.com/)
+[Create github page](https://pages.github.com/) if documentation is needed
+
+For the library example `ts-patch` and `typescript-transform-paths` are required in order to resolve paths aliases into the full path

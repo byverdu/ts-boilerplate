@@ -1,6 +1,5 @@
 import { Car, Brand, TankCapacity, FillTank } from '@byverdu/CarFactory';
-
-export { Car, Brand, TankCapacity, FillTank };
+import { logger } from '@utils/index';
 
 export default class CarFactory implements Car {
   public brand: Brand;
@@ -11,9 +10,13 @@ export default class CarFactory implements Car {
     this.brand = brand;
     this.tank = 'empty';
     CarFactory.carsBuild = CarFactory.carsBuild + 1;
+
+    logger('log', `new ${brand} car built`);
   }
 
   public fillTank(capacity: FillTank) {
     this.tank = capacity;
   }
 }
+
+export { Car, Brand, TankCapacity, FillTank };

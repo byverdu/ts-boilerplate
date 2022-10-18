@@ -1,5 +1,5 @@
 // const CarFactory = require('./lib-cjs/index').default;
-import CarFactory from './lib-esm/index.mjs';
+import CarFactory from './lib-esm/index.js';
 
 const audi = new CarFactory('audi');
 

@@ -2,28 +2,28 @@
   "name": "node-example",
   "version": "1.0.0",
   "description": "",
-  "main": "lib/index.js",
-  "module": "lib-esm/index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib-cjs/index.js",
+  "module": "lib-esm/index.mjs",
+  "types": "lib-cjs/index.d.ts",
   "type": "module",
   "exports": {
     ".": {
       "types": "./lib/typings/index.d.ts",
-      "import": "./lib-esm/index.js",
+      "import": "./lib-esm/index.mjs",
       "require": "./lib-cjs/index.cjs"
     }
   },
   "scripts": {
     "test": "jest",
     "lint": "tsc --noEmit && eslint ./src",
-    "clean": "rm -rf lib",
+    "clean": "rm -rf lib lib*",
     "build:typescript": "mkdir lib && cp -r src/* lib",
     "build:cjs": "tsc",
     "build:esm": "tsc -m es6 --outDir ./lib-esm",
     "build": "yarn clean && yarn build:typescript && yarn build:cjs && yarn build:esm",
     "docs:html": "typedoc ./src/index.ts",
     "docs:markdown": "typedoc --plugin typedoc-plugin-markdown --out docs ./src/index.ts",
-    "prepare": "husky install"
+    "prepare": "husky install && ts-patch install -s"
   },
   "keywords": [],
   "author": "",
@@ -39,8 +39,10 @@
     "prettier": "^2.7.1",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
+    "ts-patch": "^2.0.2",
     "typedoc": "^0.23.16",
     "typedoc-plugin-markdown": "^3.13.6",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "typescript-transform-paths": "^3.3.1"
   }
 }
