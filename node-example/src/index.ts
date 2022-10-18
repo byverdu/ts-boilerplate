@@ -1,5 +1,5 @@
 import { Car, Brand, TankCapacity, FillTank } from '@byverdu/CarFactory';
-import { logger } from '@utils/index';
+import { logger } from '@utils/logger.js';
 
 export default class CarFactory implements Car {
   public brand: Brand;
