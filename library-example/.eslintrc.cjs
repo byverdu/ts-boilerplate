@@ -8,6 +8,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:@typescript-eslint/strict',
+    'plugin:import/recommended',
     'plugin:import/typescript',
   ],
   parser: '@typescript-eslint/parser',
@@ -24,7 +25,9 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
-      typescript: {},
+      typescript: {
+        project: './tsconfig.json',
+      },
     },
   },
 };

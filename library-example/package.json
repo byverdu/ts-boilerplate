@@ -15,7 +15,7 @@
   "main": "lib-cjs/index.js",
   "scripts": {
     "test": "jest",
-    "lint": "tsc --noEmit && eslint ./src",
+    "lint": "tsc --noEmit && eslint ./src --fix",
     "clean": "rm -rf lib lib*",
     "build:typescript": "mkdir -p lib/src && cp -r src/* lib/src && cp tsconfig.json lib",
     "build:cjs": "tsc -m commonjs -t es5 --outDir ./lib-cjs",
