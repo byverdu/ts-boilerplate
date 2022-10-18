@@ -1,0 +1,48 @@
+{
+  "name": "node-example",
+  "version": "1.0.0",
+  "description": "",
+  "module": "lib-esm/index.js",
+  "types": "lib-cjs/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./lib-esm/index.d.ts",
+      "import": "./lib-esm/index.mjs",
+      "require": "./lib-cjs/index.cjs"
+    }
+  },
+  "main": "lib-cjs/index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "tsc --noEmit && eslint ./src",
+    "clean": "rm -rf lib lib*",
+    "build:typescript": "mkdir -p lib/src && cp -r src/* lib/src && cp tsconfig.json lib",
+    "build:cjs": "tsc -m commonjs -t es5 --outDir ./lib-cjs",
+    "build:esm": "tsc",
+    "build": "yarn clean && yarn build:typescript && yarn build:cjs && yarn build:esm",
+    "docs:html": "typedoc ./src/index.ts",
+    "docs:markdown": "typedoc --plugin typedoc-plugin-markdown --out docs ./src/index.ts",
+    "prepare": " ts-patch install -s && husky install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.1.2",
+    "@types/node": "^18.8.4",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
+    "eslint": "^8.25.0",
+    "husky": "^8.0.1",
+    "jest": "^29.2.0",
+    "prettier": "^2.7.1",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "ts-patch": "^2.0.2",
+    "typedoc": "^0.23.16",
+    "typedoc-plugin-markdown": "^3.13.6",
+    "typescript": "^4.8.4",
+    "typescript-transform-paths": "^3.3.1"
+  }
+}
