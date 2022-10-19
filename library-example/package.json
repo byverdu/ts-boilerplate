@@ -18,9 +18,9 @@
     "lint": "tsc --noEmit && eslint ./src --fix",
     "clean": "rm -rf lib lib*",
     "build:typescript": "mkdir -p lib/src && cp -r src/* lib/src && cp tsconfig.json lib",
-    "build:cjs": "tsc -m commonjs -t es5 --outDir ./lib-cjs",
-    "build:esm": "tsc",
-    "build": "yarn clean && yarn build:typescript && yarn build:cjs && yarn build:esm",
+    "build:cjs": "tsc --project tsconfig.build.json -m commonjs -t es5 --outDir ./lib-cjs",
+    "build:esm": "tsc --project tsconfig.build.json",
+    "build": "pnpm clean && pnpm build:typescript && pnpm build:cjs && pnpm build:esm",
     "docs:html": "typedoc ./src/index.ts",
     "docs:markdown": "typedoc --plugin typedoc-plugin-markdown --out docs ./src/index.ts",
     "prepare": " ts-patch install -s && husky install"
@@ -29,7 +29,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/jest": "^29.1.2",
+    "@types/jest": "^29.2.0",
     "@types/node": "^18.8.4",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",

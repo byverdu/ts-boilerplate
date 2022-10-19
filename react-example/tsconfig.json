@@ -116,6 +116,6 @@
       }
     ]
   },
-  "include": ["**/*", "./__tests__/*", "./jest/jest.config.ts"],
-  "exclude": ["node_modules", "./dist*"]
+  "include": ["**/*", "./__tests__/*", "jest.config.ts"],
+  "exclude": ["node_modules"]
 }
