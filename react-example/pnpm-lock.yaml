@@ -18,11 +18,13 @@ specifiers:
   html-webpack-plugin: ^5.5.0
   husky: ^8.0.1
   jest: ^29.2.1
+  loader-utils: ^3.2.0
   node-sass: ^7.0.3
   prettier: ^2.7.1
   react: ^18.2.0
   react-dom: ^18.2.0
   sass-loader: ^13.1.0
+  schema-utils: ^4.0.0
   style-loader: ^3.3.1
   ts-jest: ^29.0.3
   ts-loader: ^9.4.1
@@ -58,9 +60,11 @@ devDependencies:
   html-webpack-plugin: 5.5.0_webpack@5.74.0
   husky: 8.0.1
   jest: 29.2.1_5uyhgycj63wuqgvl4exdnr442q
+  loader-utils: 3.2.0
   node-sass: 7.0.3
   prettier: 2.7.1
   sass-loader: 13.1.0_if6h3gdw6pla6jas3olbkxwst4
+  schema-utils: 4.0.0
   style-loader: 3.3.1_webpack@5.74.0
   ts-jest: 29.0.3_7yfpbkrrkkmtlepb2un4d37cti
   ts-loader: 9.4.1_qqxisngxjbp7lstdk7boexbu3e
@@ -4741,6 +4745,11 @@ packages:
   /loader-runner/4.3.0:
     resolution: {integrity: sha512-3R/1M+yS3j5ou80Me59j7F9IMs4PXs3VqRrm0TU3AbKPxlmpoY1TNscJV/oGJXo8qCatFGTfDbY6W6ipGOYXfg==}
     engines: {node: '>=6.11.5'}
+    dev: true
+
+  /loader-utils/3.2.0:
+    resolution: {integrity: sha512-HVl9ZqccQihZ7JM85dco1MvO9G+ONvxoGa9rkhzFsneGLKSUg1gJf9bWzhRhcvm2qChhWpebQhP44qxjKIUCaQ==}
+    engines: {node: '>= 12.13.0'}
     dev: true
 
   /locate-path/5.0.0:
