@@ -4,8 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "build:style-typings": "typed-scss-modules \"src/**/**/*.scss\"",
     "start": "NODE_ENV=development webpack-dev-server",
-    "build": "NODE_ENV=development webpack",
+    "build": "NODE_ENV=production webpack",
     "prepare": "ts-patch install -s && husky install"
   },
   "keywords": [],
@@ -20,6 +21,7 @@
     "@types/webpack": "^5.28.0",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
+    "css-loader": "^6.7.1",
     "eslint": "^8.25.0",
     "eslint-import-resolver-typescript": "^3.5.1",
     "eslint-plugin-import": "^2.26.0",
@@ -31,15 +33,18 @@
     "node-sass": "^7.0.3",
     "prettier": "^2.7.1",
     "sass-loader": "^13.1.0",
+    "style-loader": "^3.3.1",
     "ts-jest": "^29.0.3",
     "ts-loader": "^9.4.1",
     "ts-node": "^10.9.1",
     "ts-patch": "^2.0.2",
+    "typed-scss-modules": "^7.0.1",
     "typescript": "^4.8.4",
     "typescript-transform-paths": "^3.3.1",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.11.1"
+    "webpack-dev-server": "^4.11.1",
+    "webpack-shell-plugin-next": "^2.2.2"
   },
   "dependencies": {
     "react": "^18.2.0",

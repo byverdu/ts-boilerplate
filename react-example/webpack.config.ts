@@ -3,15 +3,8 @@ import { Configuration } from 'webpack';
 import { Configuration as DevServerConfiguration } from 'webpack-dev-server';
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackShellPluginNext = require('webpack-shell-plugin-next');
 const MODE = process.env.NODE_ENV ?? 'production';
-
-interface HtmlWebpackPluginOptions {
-  htmlWebpackPlugin: {
-    options: {
-      title: string;
-    };
-  };
-}
 
 const devServer: DevServerConfiguration = {
   port: 8080,
@@ -32,19 +25,37 @@ const config: Configuration = {
   module: {
     rules: [
       { test: /\.(ts|tsx)$/, loader: 'ts-loader', exclude: /node_modules/ },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { modules: true } },
+          'sass-loader',
+        ],
+      },
     ],
   },
   plugins: [
+    ...(MODE === 'development'
+      ? [
+          new WebpackShellPluginNext({
+            onBuildEnd: {
+              parallel: true,
+              scripts: ['pnpm build:style-typings'],
+            },
+          }),
+        ]
+      : []),
+
     new HtmlWebpackPlugin({
       meta: {
         viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
       },
       inject: 'body',
       title: 'React Example',
-      templateContent: ({ htmlWebpackPlugin }: HtmlWebpackPluginOptions) => `
+      templateContent: `
       <html>
         <body>
-          <h1>${htmlWebpackPlugin.options.title}</h1>
           <div id="root"></div>
         </body>
       </html>
