@@ -6,6 +6,5 @@ export var config = {
   exportTypeInterface: 'IStyles',
   exportTypeName: 'ModuleClassNames',
   nameFormat: ['kebab'],
-  updateStaleOnly: true,
-  watch: true,
+  updateStaleOnly: true
 };

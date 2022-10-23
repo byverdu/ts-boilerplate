@@ -7,7 +7,7 @@
     "build:style-typings": "typed-scss-modules \"src/**/**/*.scss\"",
     "start": "NODE_ENV=development webpack-dev-server",
     "build": "NODE_ENV=production webpack",
-    "prepare": "ts-patch install -s && husky install"
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +27,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "fork-ts-checker-webpack-plugin": "^7.2.13",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.1",
     "jest": "^29.2.1",
@@ -39,14 +40,13 @@
     "ts-jest": "^29.0.3",
     "ts-loader": "^9.4.1",
     "ts-node": "^10.9.1",
-    "ts-patch": "^2.0.2",
+    "tsconfig-paths-webpack-plugin": "^4.0.0",
     "typed-scss-modules": "^7.0.1",
     "typescript": "^4.8.4",
-    "typescript-transform-paths": "^3.3.1",
+    "typescript-transform-paths": "^3.4.1",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.11.1",
-    "webpack-shell-plugin-next": "^2.2.2"
+    "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
     "react": "^18.2.0",

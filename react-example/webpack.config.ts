@@ -3,7 +3,9 @@ import { Configuration } from 'webpack';
 import { Configuration as DevServerConfiguration } from 'webpack-dev-server';
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const WebpackShellPluginNext = require('webpack-shell-plugin-next');
+const TypingsForSCSS = require('./webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const MODE = process.env.NODE_ENV ?? 'production';
 
 const devServer: DevServerConfiguration = {
@@ -21,6 +23,7 @@ const config: Configuration = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
+    plugins: [new TsconfigPathsPlugin()],
   },
   module: {
     rules: [
@@ -28,10 +31,6 @@ const config: Configuration = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          {
-            loader: path.resolve('./webpack-loader/index.js'),
-            options: { pollo: 123 },
-          },
           'style-loader',
           { loader: 'css-loader', options: { modules: true } },
           'sass-loader',
@@ -40,17 +39,9 @@ const config: Configuration = {
     ],
   },
   plugins: [
-    // ...(MODE === 'development'
-    //   ? [
-    //       new WebpackShellPluginNext({
-    //         onBuildEnd: {
-    //           parallel: true,
-    //           scripts: ['pnpm build:style-typings'],
-    //         },
-    //       }),
-    //     ]
-    //   : []),
-
+    new TypingsForSCSS({
+      webpackMode: MODE,
+    }),
     new HtmlWebpackPlugin({
       meta: {
         viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
@@ -65,6 +56,7 @@ const config: Configuration = {
       </html>
     `,
     }),
+    new ForkTsCheckerWebpackPlugin(),
   ],
 };
 
