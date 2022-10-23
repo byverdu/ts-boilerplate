@@ -26,9 +26,12 @@
     "@types/webpack": "^5.28.0",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
+    "autoprefixer": "^10.4.12",
+    "browserslist": "^4.21.4",
     "css-loader": "^6.7.1",
     "eslint": "^8.25.0",
     "eslint-import-resolver-typescript": "^3.5.1",
+    "eslint-plugin-compat": "^4.0.2",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -41,6 +44,7 @@
     "jest-environment-jsdom": "^29.2.1",
     "loader-utils": "^3.2.0",
     "postcss": "^8.4.18",
+    "postcss-loader": "^7.0.1",
     "postcss-scss": "^4.0.5",
     "prettier": "^2.7.1",
     "sass": "^1.55.0",
@@ -66,5 +70,11 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie < 11",
+    "last 2 versions",
+    "> 1%"
+  ]
 }

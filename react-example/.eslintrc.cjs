@@ -14,6 +14,7 @@ module.exports = {
     'plugin:import/typescript',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:compat/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -39,5 +40,6 @@ module.exports = {
     react: {
       version: 'detect',
     },
+    polyfills: ['fetch', 'Promise'],
   },
 };

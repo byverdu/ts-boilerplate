@@ -19,6 +19,7 @@ const devServer: DevServerConfiguration = {
 const config: Configuration = {
   devServer,
   mode: MODE as Configuration['mode'],
+  target: 'browserslist',
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -35,7 +36,26 @@ const config: Configuration = {
         test: /\.s[ac]ss$/i,
         use: [
           'style-loader',
-          { loader: 'css-loader', options: { modules: true } },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                mode: 'local',
+                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                localIdentContext: path.resolve(__dirname, 'src'),
+                exportLocalsConvention: 'camelCase',
+              },
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              config: {
+                path: 'postcss.config.js',
+              },
+            },
+          },
           'sass-loader',
         ],
       },
