@@ -12,6 +12,8 @@ module.exports = {
     'plugin:@typescript-eslint/strict',
     'plugin:import/recommended',
     'plugin:import/typescript',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -23,9 +25,7 @@ module.exports = {
     },
   },
   plugins: [
-    '@typescript-eslint',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
+    '@typescript-eslint'
   ],
   ignorePatterns: ['*.cjs', 'dist/*.js'],
   rules: {
@@ -38,5 +38,8 @@ module.exports = {
         project: './tsconfig.json',
       },
     },
+    react: {
+      version: 'detect'
+  }
   },
 };

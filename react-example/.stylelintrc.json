@@ -1,0 +1,14 @@
+{
+  "extends": "stylelint-config-standard",
+  "customSyntax": "postcss-scss",
+  "plugins": [
+    "stylelint-scss",
+    "stylelint-csstree-validator"
+  ],
+  "rules": {
+    "value-keyword-case": "lower",
+    "csstree/validator": {
+      "syntaxExtensions": ["sass"]
+    }
+  }
+}
