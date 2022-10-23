@@ -7,6 +7,8 @@ const TypingsForSCSS = require('./webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
+
 const MODE = process.env.NODE_ENV ?? 'production';
 
 const devServer: DevServerConfiguration = {
@@ -40,11 +42,15 @@ const config: Configuration = {
     ],
   },
   plugins: [
-      new StylelintPlugin({
-          configFile: './.stylelintrc.json',
-          context: './src/**/*.scss',
-          fix: true
-      }),
+    new StylelintPlugin({
+      configFile: './.stylelintrc.json',
+      context: './src/**/*.scss',
+      fix: true,
+    }),
+    new ESLintPlugin({
+      extensions: ['ts', 'tsx'],
+      fix: true,
+    }),
     new ForkTsCheckerWebpackPlugin(),
     new TypingsForSCSS({
       webpackMode: MODE,

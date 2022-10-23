@@ -13,7 +13,7 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:import/typescript',
     'plugin:react/recommended',
-    'plugin:react-hooks/recommended'
+    'plugin:react-hooks/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -24,9 +24,7 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: [
-    '@typescript-eslint'
-  ],
+  plugins: ['@typescript-eslint'],
   ignorePatterns: ['*.cjs', 'dist/*.js'],
   rules: {
     'no-console': ['error', { allow: ['error'] }],
@@ -39,7 +37,7 @@ module.exports = {
       },
     },
     react: {
-      version: 'detect'
-  }
+      version: 'detect',
+    },
   },
 };
