@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "prettify": "prettier ./src/* --write",
     "lint:styles": "stylelint src/**/*.scss",
     "lint": "tsc --noEmit && eslint ./src --fix && pnpm lint:styles",
     "build:style-typings": "typed-scss-modules \"src/**/**/*.scss\"",

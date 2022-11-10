@@ -17,6 +17,7 @@
     "test": "jest",
     "dev": "tsc --watch",
     "lint": "tsc --noEmit && eslint ./src --fix",
+    "prettify": "prettier ./src/* --write",
     "clean": "rm -rf lib lib*",
     "build:typescript": "mkdir -p lib/src && cp -r src/* lib/src && cp tsconfig.json lib",
     "build:cjs": "tsc --project tsconfig.build.json -m commonjs -t es5 --outDir ./lib-cjs",
