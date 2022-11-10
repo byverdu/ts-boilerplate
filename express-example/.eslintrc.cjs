@@ -18,7 +18,7 @@ module.exports = {
     project: ['./tsconfig.json'],
   },
   plugins: ['@typescript-eslint'],
-  ignorePatterns: ['*.cjs', 'lib/*.js'],
+  ignorePatterns: ['*.cjs', 'dist/*.js'],
   rules: {
     'no-console': ['error', { allow: ['error'] }],
     'import/no-unresolved': ['error'],

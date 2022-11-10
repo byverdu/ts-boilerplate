@@ -1,12 +1,10 @@
-import { RequestInit, Response as FetchResponse } from 'undici/types/fetch';
+import { HttpClientArgs } from '@byverdu/express-api';
+import { Response } from 'undici';
 
-interface HttpClient {
-  url: string;
-  params?: RequestInit;
-}
-
-const get = async ({ url }: HttpClient) => await fetch(url);
-const post = async ({ url, params }: HttpClient) => fetch(url, { ...params });
+const get = async ({ url }: HttpClientArgs): Promise<Response> =>
+  await fetch(url);
+const post = async ({ url, params }: HttpClientArgs) =>
+  await fetch(url, { ...params });
 
 export { get, post };
 
