@@ -1,6 +1,6 @@
-declare module '@byverdu/express-api' {
+declare module '@app-types-express-api' {
   export interface HttpClientArgs {
     url: string;
-    params?: RequestInit;
+    params?: import('undici').RequestInit;
   }
 }

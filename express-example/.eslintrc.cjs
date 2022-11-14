@@ -21,11 +21,17 @@ module.exports = {
   ignorePatterns: ['*.cjs', 'dist/*.js'],
   rules: {
     'no-console': ['error', { allow: ['error'] }],
-    'import/no-unresolved': ['error'],
+    'import/no-unresolved': [
+      'error',
+      {
+        ignore: ['@app-types-express-api'],
+      },
+    ],
   },
   settings: {
     'import/resolver': {
       typescript: {
+        alwaysTryTypes: true,
         project: './tsconfig.json',
       },
     },
