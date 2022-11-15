@@ -9,4 +9,3 @@ const post = async ({ url, params }: HttpClientArgs) =>
 
 export { get, post };
 
-// https://kentcdodds.com/blog/using-fetch-with-type-script
