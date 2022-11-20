@@ -1,18 +1,9 @@
-import { get } from '@services/httpClient/index';
-
-interface GithubUserApiResponse {
-  name: string;
-  location: string;
-  avatar_url: string;
-  created_at: string;
-  login: string;
-}
+import { GithubUserApiResponse, UserService } from '@app-types-express-api';
+import { get } from '@services/httpClient';
 
 const GITHUB_API = 'https://api.github.com/users';
 
-const getUser = async (
-  userName: string
-): Promise<GithubUserApiResponse | Error> => {
+const getUser: UserService['getUser'] = async userName => {
   try {
     const response = await get({ url: `${GITHUB_API}/${userName}` });
 
@@ -27,7 +18,7 @@ const getUser = async (
       });
     }
   } catch (tryError) {
-    throw new Error(String(tryError));
+    return String(tryError);
   }
 };
 

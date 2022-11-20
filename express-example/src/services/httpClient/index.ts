@@ -1,10 +1,8 @@
-import { HttpClientArgs } from '@app-types-express-api';
-import { Response } from 'undici';
+import { HttpClient } from '@app-types-express-api';
 
-const get = async ({ url }: HttpClientArgs): Promise<Response> =>
-  await fetch(url);
+const get: HttpClient['get'] = async ({ url }) => await fetch(url);
 
-const post = async ({ url, params }: HttpClientArgs) =>
+const post: HttpClient['post'] = async ({ url, params }) =>
   await fetch(url, { method: 'POST', ...params });
 
 export { get, post };

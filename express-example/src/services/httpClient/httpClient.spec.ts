@@ -44,7 +44,7 @@ describe('httpClient', () => {
     it('should be defined', () => {
       expect(httpClient.post).toBeInstanceOf(Function);
     });
-    it('should be called with an url param', async () => {
+    it('should be called with an url param and body', async () => {
       jest.spyOn(httpClient, 'post');
 
       await httpClient.post({ url: 'http://test.com' });

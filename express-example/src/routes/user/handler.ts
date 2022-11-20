@@ -14,11 +14,7 @@ const getUserHandler = (
       res.json(userInfo);
     })
     .catch(error => {
-      if (!(error instanceof Error)) {
-        res.json(error);
-      } else {
-        res.send(String(error));
-      }
+      res.json(error);
     });
 };
 
