@@ -1,22 +1,11 @@
-import express, { Express } from 'express';
-import morgan from 'morgan';
-import cors from 'cors';
-import bodyParser from 'body-parser';
+import { expressApp } from '@app';
 
-import { healthRouter } from '@routes/health';
-import { userRouter } from '@routes/user';
+const PORT = process.env.PORT ?? 3000;
 
-const app: Express = express();
-
-app.use(cors());
-app.use(morgan('dev'));
-app.use(bodyParser.json());
-
-app.use('/health', healthRouter);
-app.use('/user', userRouter);
-
-app.use((req, res) => {
-  res.status(404).send(`No handler found for ${req.url}`);
+expressApp().listen(PORT, () => {
+  // eslint-disable-next-line no-console
+  console.log(`App running at port ${PORT}`);
 });
 
-export { app };
+process.on('SIGINT', () => process.exit());
+process.on('exit', () => process.exit());
