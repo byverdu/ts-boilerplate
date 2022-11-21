@@ -66,5 +66,16 @@ describe('user service', () => {
         'Error: json is not a method'
       );
     });
+
+    it('should be called for a given user name', async () => {
+      jest.mock('./');
+
+      jest.spyOn(userService, 'getUser');
+
+      await userService.getUser(USER_NAME);
+
+      expect(userService.getUser).toBeCalledTimes(1);
+      expect(userService.getUser).toBeCalledWith(USER_NAME);
+    });
   });
 });

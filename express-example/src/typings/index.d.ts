@@ -12,11 +12,11 @@ declare module '@app-types-express-api' {
   }
 
   export interface GithubUserApiResponse {
-    name: string;
-    location: string;
-    avatar_url: string;
-    created_at: string;
-    login: string;
+    name?: string;
+    location?: string;
+    avatar_url?: string;
+    created_at?: string;
+    login?: string;
   }
 
   export interface UserService {
