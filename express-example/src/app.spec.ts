@@ -1,5 +1,14 @@
 import request from 'supertest';
 import { expressApp } from '@app';
+import * as userService from '@services/user';
+
+jest.mock('./services/user');
+
+let app: Express.Application;
+
+beforeEach(() => {
+  app = expressApp();
+});
 
 describe('App', () => {
   it('should be defined', () => {
@@ -7,7 +16,6 @@ describe('App', () => {
   });
 
   it('should have a /health route', async () => {
-    const app = expressApp();
     const resp = await request(app).get('/health');
 
     expect(resp.ok).toEqual(true);
@@ -15,8 +23,19 @@ describe('App', () => {
     expect(resp.text).toEqual('ok');
   });
 
+  it('should have a /user route', async () => {
+    const response = { login: 'byverdu' };
+    jest.spyOn(userService, 'getUser').mockResolvedValue(response);
+
+    const resp = await request(app).get('/user/byverdu');
+
+    expect(resp.status).toEqual(200);
+    expect(resp.ok).toEqual(true);
+    expect(resp.type).toEqual('application/json');
+    expect(resp.text).toEqual(JSON.stringify(response));
+  });
+
   it('should handle 404 requests', async () => {
-    const app = expressApp();
     const resp = await request(app).get('/notFound');
 
     expect(resp.status).toEqual(404);
