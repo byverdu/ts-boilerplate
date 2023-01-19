@@ -4,10 +4,14 @@ Typescript set up for different types of projects. Examples:
 
 - Library
 - React
+- Express App
 
 Husky config is missing, run:
 
 ```sh
+# husky install
+> yarn add -D husky
+
 # husky setup
 > yarn run prepare
 

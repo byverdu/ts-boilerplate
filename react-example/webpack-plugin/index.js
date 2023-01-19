@@ -34,12 +34,12 @@ class TypingsForSCSS {
     });
 
     proc.on('error', error => {
-      throw new Error(error);
+      throw error;
     });
 
     proc.on('close', error => {
       if (error) {
-        throw error;
+        throw new Error(error);
       }
     });
   }
@@ -50,7 +50,7 @@ class TypingsForSCSS {
 
   async onAfterEmit(compilation, callback) {
     const scripts = this.scriptToExecute;
-    if (scripts) {
+    if (scripts.args.length > 0) {
       this.runScript(scripts);
 
       this.scriptToExecute = JSON.parse(JSON.stringify(initialState));
