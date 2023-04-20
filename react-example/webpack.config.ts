@@ -1,16 +1,14 @@
 import path from 'path';
 import { Configuration } from 'webpack';
 import { Configuration as DevServerConfiguration } from 'webpack-dev-server';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { TypingsForSCSS } from './webpack-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+import StylelintPlugin from 'stylelint-webpack-plugin';
+import ESLintPlugin from 'eslint-webpack-plugin';
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const TypingsForSCSS = require('./webpack-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const StylelintPlugin = require('stylelint-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
-
-const MODE = process.env.NODE_ENV ?? 'production';
-
+const MODE = (process.env.NODE_ENV ?? 'production') as Configuration['mode'];
 const devServer: DevServerConfiguration = {
   port: 8080,
   static: 'dist',
@@ -18,7 +16,7 @@ const devServer: DevServerConfiguration = {
 
 const config: Configuration = {
   devServer,
-  mode: MODE as Configuration['mode'],
+  mode: MODE,
   target: 'browserslist',
   entry: './src/index.tsx',
   output: {
@@ -41,7 +39,7 @@ const config: Configuration = {
             options: {
               modules: {
                 mode: 'local',
-                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                localIdentName: '[local]--[hash:base64:5]',
                 localIdentContext: path.resolve(__dirname, 'src'),
                 exportLocalsConvention: 'camelCase',
               },
@@ -51,8 +49,8 @@ const config: Configuration = {
             loader: 'postcss-loader',
             options: {
               sourceMap: true,
-              config: {
-                path: 'postcss.config.js',
+              postcssOptions: {
+                plugins: [require('autoprefixer')],
               },
             },
           },
@@ -73,7 +71,7 @@ const config: Configuration = {
     }),
     new ForkTsCheckerWebpackPlugin(),
     new TypingsForSCSS({
-      webpackMode: MODE,
+      mode: MODE,
     }),
     new HtmlWebpackPlugin({
       meta: {
@@ -84,7 +82,7 @@ const config: Configuration = {
       templateContent: `
       <html>
         <body>
-          <div id="root"></div>
+          <div id="root">React did not compile</div>
         </body>
       </html>
     `,
