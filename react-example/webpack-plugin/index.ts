@@ -40,7 +40,7 @@ export class TypingsForSCSS {
 
     proc.on('close', error => {
       if (error) {
-        throw new Error('there was an issue closing the process');
+        throw new Error(`The process closed with error number ${error}`);
       }
     });
   }
